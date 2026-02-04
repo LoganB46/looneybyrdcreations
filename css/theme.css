@@ -1,0 +1,113 @@
+/* =========================
+   Looney Byrd Creations Theme System
+   Universal + Pleasant Light
+   ========================= */
+
+:root {
+  --radius: 16px;             /* border radius for cards, inputs, etc. */
+
+  --bg: #f6f7fb;              /* soft neutral background */
+  --text: #0f172a;            /* slate-900 */
+  --muted: rgba(15, 23, 42, 0.70);
+
+  --panel: #ffffff;           /* card background */
+  --panel2: #f1f5f9;          /* subtle panel fill */
+  --border: rgba(15, 23, 42, 0.12);
+
+  --link: #1d4ed8;            /* readable link blue */
+  --accent: #0ea5e9;          /* calm cyan accent */
+
+  --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+}
+header {
+    background: var(--bg);
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Base */
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Links */
+a { color: var(--link); }
+a:hover { opacity: 0.88; }
+
+/* Cards / panels (works with your custom cards too) */
+.card,
+.panel,
+.event-card,
+.facility-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Bootstrap helpers: make “dark cards” obey theme */
+.card.bg-dark {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+}
+.text-white { color: var(--text) !important; }
+.border-secondary { border-color: var(--border) !important; }
+.text-muted { color: var(--muted) !important; }
+
+/* Navbar */
+.navbar {
+  background: var(--panel) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* Nav links */
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: var(--text) !important;
+}
+.navbar .nav-link:hover { opacity: 0.88; }
+
+/* Dropdowns */
+.dropdown-menu {
+  background: var(--panel) !important;
+  border: 1px solid var(--border) !important;
+}
+.dropdown-item { color: var(--text) !important; }
+.dropdown-item:hover {
+  background: var(--panel2) !important;
+}
+
+/* Inputs */
+.form-control,
+.form-select,
+textarea {
+  background: var(--panel2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+}
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent) !important;
+}
+
+/* Buttons */
+.btn-outline-light {
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.btn-outline-light:hover {
+  background: var(--panel2) !important;
+  border-color: var(--accent) !important;
+  color: var(--text) !important;
+}
+#mainNav {
+    font-size: 18px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+}

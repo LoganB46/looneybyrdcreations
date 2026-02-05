@@ -18,9 +18,6 @@
     }
   </style>
 
-  <script src="/js/bootstrap.bundle.js" defer></script>
-  <script src="/js/include.js" defer></script>
-  <script src="/js/shirt-customizer.js" defer></script>
 </head>
 
 <body>
@@ -49,36 +46,38 @@
       <div class="card p-3">
         <h3 class="mb-3">Customize</h3>
 
-        <!--<label class="form-label">Shirt color</label>
-        <input id="colorPicker" type="color" class="form-control form-control-color" value="#1f6feb">-->
+        
         <label class="form-label">Shirt color</label>
             <select id="colorSelect" class="form-select">
-                <option value="#ffffff">White</option>
-                <option value="#111827">Black</option>
-                <option value="#1f2937">Charcoal</option>
-                <option value="#0f766e">Teal</option>
-                <option value="#1d4ed8" selected>Royal Blue</option>
-                <option value="#b91c1c">Red</option>
-                <option value="#166534">Forest Green</option>
-                <option value="#f59e0b">Gold</option>
-                <option value="#f3f4f6">Light Gray</option>
+                <div class="d-flex align-items-center gap-2 mt-2">
+                  <span id="colorSwatch"
+                  style="width:28px;height:28px;border-radius:6px;border:1px solid #ccc;display:inline-block;"></span>
+                  <span id="colorName" class="text-muted"></span>
+                </div>
             </select>
             
         <label class="form-label mt-3">Design</label>
         <select id="designSelect" class="form-select">
-          <option value="/resource/designs/bass-beer.png">Bass & Beer</option>
           <option value="/resource/designs/placeholder.png">Placeholder</option>
+          <option value="/resource/designs/bass-beer.png">Bass & Beer</option>
+          <option value="/resource/designs/flag-skull.png">Flag Skull</option>
+          <option value="/resource/designs/moonpie.png">Mardi Gras Moon Pie</option>
           <option value="">None</option>
         </select>
 
-        <div class="d-flex gap-2 mt-3">
-          <button id="zoomIn" class="btn btn-outline-dark">Zoom +</button>
-          <button id="zoomOut" class="btn btn-outline-dark">Zoom -</button>
-          <button id="reset" class="btn btn-outline-secondary">Reset</button>
-        </div>
+        <label class="form-label mt-3">Size</label>
+        <select id="shirtSizeSelect" class="form-select">
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          <option value="XL">X-Large</option>
+          <option value="2XL">2X-Large</option>
+          <option value="3XL">3X-Large</option>
+          <option value="4XL">4X-Large</option>
+        </select>
 
         <small class="text-muted d-block mt-3">
-          Tip: Use a good “shirt-base.png” mockup with clear wrinkles/shading for best tint results.
+          Colors shown are approximate. Actual shirt colors may vary slightly
         </small>
       </div>
     </div>
@@ -86,24 +85,34 @@
 </div>
 
 <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div id="demo" class="carousel slide product-carousel" data-bs-ride="carousel">
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
   </div>
 
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/Shirt colors.png" alt="colors" class="d-block w-100">
+      <img src="/resource/shirt-colors.png" alt="colors" class="d-block w-100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this)">
     </div>
     <div class="carousel-item">
-      <img src="/Shirt Size guide.jpg" alt="size" class="d-block w-100">
+      <img src="/resource/shirt-size-guide.jpg" alt="size" class="d-block w-100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this)">
     </div>
-  </div>
+
+    <!--Reusable modal --> <div class="modal fade" id="imageModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark border-0">
+          <div class="modal-body text-center">
+            <img id="modalImage" src="" class="img-fluid rounded">
+          </div>
+        </div>
+      </div> <!--Reusable modal -->
+    </div>
+</div>
+
 
   <!-- Left and right controls/icons -->
   <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
@@ -119,5 +128,8 @@
       <p class="mb-0">&copy; 2024 Looney Byrd Creations. All rights reserved.</p>
     </div>
   </footer>
+  <script src="/js/bootstrap.bundle.js" defer></script>
+  <script src="/js/include.js" defer></script>
+  <script src="/js/shirt-customizer.js" defer></script>
 </body>
 </html>

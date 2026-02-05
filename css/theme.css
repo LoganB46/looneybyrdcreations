@@ -9,6 +9,7 @@
   --bg: #f6f7fb;              /* soft neutral background */
   --text: #0f172a;            /* slate-900 */
   --muted: rgba(15, 23, 42, 0.70);
+  --mutedbg: #e2e5ec;        /* slate-300 */
 
   --panel: #ffffff;           /* card background */
   --panel2: #f1f5f9;          /* subtle panel fill */
@@ -24,13 +25,25 @@ header {
     padding: 20px 0;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: darkblue;
+}
+footer {
+    background: var(--mutedbg);
+    padding: 20px 0;
+    margin-top: 15px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+    text-align: center;
 }
 
 /* Base */
 html, body { height: 100%; }
 body {
-  background: var(--bg);
+  background-image: url("resource/bg-image.png");
   color: var(--text);
+
 }
 
 /* Links */
@@ -110,4 +123,13 @@ textarea:focus {
     font-size: 18px;
     padding: 10px 15px;
     text-transform: uppercase;
+}
+.clickable-img {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }

@@ -1,0 +1,17 @@
+# Commit Notes for Looney Byrd Creations
+
+[2026-02-06]
+Activity Log:
+- Updated index.html to load bootstrap-icons from local node_modules instead of CDN for better performance and offline access.
+- In theme.css, added custom styles for bootstrap-icons to ensure consistent appearance across different browsers.
+- Changed the Original include.js to include-og.js to keep as a backup if needed.
+- Added new include.js file to enhance website functionality with additional features and optimizations.
+- Added Notes folder for personal use and future reference, containing basic(general purpose) and commit notes.
+- Removed <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self';"> from index.html to simplify content security policy for development purposes.
+- Added bootstrap icons for social media links to the navbar. !Tiktok linke is the only one that is live at the moment.
+- Added bootstrap icons to local directoy from CDN for offline use and faster loading times and to work around github security issues.
+- !package-lock.json package.json and node_modules! were added in the process of adding bootstrap icons locally.
+
+
+

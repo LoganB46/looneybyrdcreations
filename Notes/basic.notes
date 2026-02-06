@@ -1,0 +1,15 @@
+General Notes for myself
+
+TO DO:
+! Loonney Byrd Creations:
+
+
+To Do:
+
+Under construction:
+
+Reminders:
+- While linking files make sure to add a / at the beginning of the path to avoid issues with relative paths.
+
+Console Commands:
+- npx https-server  --> Starts a local server, it works like live server, but with less issues.

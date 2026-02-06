@@ -66,7 +66,7 @@ a:hover { opacity: 0.88; }
   background: var(--panel) !important;
   color: var(--text) !important;
 }
-.text-white { color: var(--text) !important; }
+.text-white { color: #ffffff !important; }
 .border-secondary { border-color: var(--border) !important; }
 .text-muted { color: var(--muted) !important; }
 
@@ -143,4 +143,7 @@ textarea:focus {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 
   overflow: hidden; /* ensures rounded corners clip images */
+}
+.social-icon svg {
+  fill: #ffffff;
 }

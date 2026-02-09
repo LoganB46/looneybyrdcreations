@@ -6,10 +6,10 @@ const cupSizeSelect = document.getElementById("cupSizeSelect");
 
 // Base images
 const cupBase20 = new Image();
-cupBase20.src = "/resource/cups/20-oz-cup.png";
+cupBase20.src = "resource/cups/20-oz-cup.png";
 
 const cupBase32 = new Image();
-cupBase32.src = "/resource/cups/32-oz-cup.png";
+cupBase32.src = "resource/cups/32-oz-cup.png";
 const PRINT_AREAS = {
   "20": {
     x: 240,

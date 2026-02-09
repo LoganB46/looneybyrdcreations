@@ -8,7 +8,7 @@ const zoomOutBtn = document.getElementById("zoomOut");
 const resetBtn = document.getElementById("reset");
 
 const shirtBase = new Image();
-shirtBase.src = "/resource/shirts/shirt-base.png";
+shirtBase.src = "resource/shirts/shirt-base.png";
 
 let designImg = null;
 let designScale = 0.55;         // default design size

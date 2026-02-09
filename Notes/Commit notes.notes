@@ -13,5 +13,15 @@ Activity Log:
 - Added bootstrap icons to local directoy from CDN for offline use and faster loading times and to work around github security issues.
 - !package-lock.json package.json and node_modules! were added in the process of adding bootstrap icons locally.
 
+[2026-02-09]
+Activity Log:
+- Removed node_modules/bootstrap-icons and node_modules/.package-lock.json to reduce repository size and improve performance. Updated - HTML, CSS, and JS files to reflect the changes.
+- Added contact.html for new contact page. Still under construction and does not function yet.
+- Removed social media icons from navbar.html and moved them to new socials.html, updated include.js to reflect the changes. Updated theme.css to improve overall design and user experience. Still under construction
+- Added Shopping cart icon to navbar.html, Page still under construction and does not funtion yet.
+- Added link to social.html to all pages.
+- Added Social media icons to about.html.
+
+
 
 

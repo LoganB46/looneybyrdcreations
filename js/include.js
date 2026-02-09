@@ -1,5 +1,5 @@
 async function loadNavbar() {
-  const url = "/navbar.html?v=" + Date.now(); // cache buster
+  const url = "navbar.html?v=" + Date.now(); // cache buster
   const res = await fetch(url, { cache: "no-store" });
   const html = await res.text();
 
@@ -29,7 +29,7 @@ async function loadNavbar() {
 loadNavbar();
 
 async function loadSocials() {
-  const url = "/socials.html?v=" + Date.now(); // cache buster
+  const url = "socials.html?v=" + Date.now(); // cache buster
   const res = await fetch(url, { cache: "no-store" });
   const html = await res.text();
   document.getElementById("socials").innerHTML = html;

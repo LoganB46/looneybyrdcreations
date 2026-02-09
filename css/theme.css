@@ -147,3 +147,56 @@ textarea:focus {
 .social-icon svg {
   fill: #ffffff;
 }
+.social-icon {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon .bi {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.instagram-btn {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285AEB 90%
+  );
+  border: none;
+}
+
+.instagram-btn .bi {
+  color: #fff;
+  font-size: 20px; /* match your other icons */
+  line-height: 1;
+}
+
+.instagram-btn:hover {
+  filter: brightness(1.05);
+}
+
+.tiktok-btn {
+  background-color: #000;
+  border: none;
+}
+
+.tiktok-btn .bi {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+
+  /* TikTok glow effect */
+  text-shadow:
+     2px  2px 0 #FE2C55; /* red */
+}
+
+.tiktok-btn:hover {
+  filter: brightness(1.1);
+}

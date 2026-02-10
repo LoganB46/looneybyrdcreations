@@ -11,7 +11,7 @@ const shirtBase = new Image();
 shirtBase.src = "resource/shirts/shirt-base.png";
 
 let designImg = null;
-let designScale = 0.55;         // default design size
+let designScale = 0.55; // default design size
 let designX = canvas.width / 2; // center point
 let designY = canvas.height / 2;
 
@@ -105,84 +105,85 @@ colorSelect.addEventListener("change", () => {
 updateSwatch();
 
 const shirtColors = {
-  "White": "#FFFFFF",
-  "Black": "#000000",
+  White: "#FFFFFF",
+  Black: "#000000",
   "Ash Grey": "#E5E5E5",
   "Sport Grey": "#9EA0A1",
-  "Natural": "#F2EAD3",
-  "Sand": "#D8CFC4",
-  "Gravel": "#B7B7B7",
+  Natural: "#F2EAD3",
+  Sand: "#D8CFC4",
+  Gravel: "#B7B7B7",
   "Graphite Heather": "#8E8F91",
-  "Charcoal": "#4A4A4A",
-  "Tweed": "#7C7F82",
-  "Navy": "#1C2A44",
+  Charcoal: "#4A4A4A",
+  Tweed: "#7C7F82",
+  Navy: "#1C2A44",
   "Heather Navy": "#2F3A4A",
   "Indigo Blue": "#355C7D",
-  "Royal": "#4169E1",
+  Royal: "#4169E1",
   "Carolina Blue": "#7BA6E5",
   "Light Blue": "#ADD8E6",
-  "Sky": "#87BCE5",
-  "Sapphire": "#1F75A8",
+  Sky: "#87BCE5",
+  Sapphire: "#1F75A8",
   "Antique Sapphire": "#4F8FBF",
-  "Cobalt": "#3A4DBF",
+  Cobalt: "#3A4DBF",
   "Neon Blue": "#4D5BFF",
   "Tropical Blue": "#3FA9E2",
-  "Red": "#C1121F",
+  Red: "#C1121F",
   "Cardinal Red": "#8C1D18",
   "Antique Cherry": "#B6455A",
-  "Garnet": "#7A0C0C",
-  "Maroon": "#7C2A2A",
-  "Berry": "#9E3F5F",
+  Garnet: "#7A0C0C",
+  Maroon: "#7C2A2A",
+  Berry: "#9E3F5F",
   "Heather Red": "#B25A6A",
-  "Azalea": "#F58AAE",
+  Azalea: "#F58AAE",
   "Safety Pink": "#FF6FAE",
   "Light Pink": "#FADADD",
-  "Violet": "#C8A2C8",
-  "Purple": "#5A2A82",
-  "Lilac": "#B9A0D8",
+  Violet: "#C8A2C8",
+  Purple: "#5A2A82",
+  Lilac: "#B9A0D8",
   "Heather Radiant Orchid": "#C879D8",
-  "Blackberry": "#4B3B53",
-  "Midnight": "#2B2352",
-  "Russet": "#6B4A4A",
+  Blackberry: "#4B3B53",
+  Midnight: "#2B2352",
+  Russet: "#6B4A4A",
   "Forest Green": "#1E3A2F",
   "Irish Green": "#2F7F3E",
   "Antique Irish Green": "#4FAF77",
   "Military Green": "#5B614D",
   "Heather Military Green": "#6A6F5E",
   "Mint Green": "#BFE6C8",
-  "Kiwi": "#7FB239",
+  Kiwi: "#7FB239",
   "Electric Green": "#4CD137",
   "Safety Green": "#C7E62E",
   "Neon Green": "#66FF00",
   "Turf Green": "#1F7A4D",
-  "Lime": "#B6FF4D",
-  "Gold": "#F4D03F",
+  Lime: "#B6FF4D",
+  Gold: "#F4D03F",
   "Old Gold": "#C9A24D",
   "Corn Silk": "#FFF2B2",
-  "Daisy": "#FFF44F",
+  Daisy: "#FFF44F",
   "Yellow Haze": "#F5F1B0",
-  "Orange": "#F28C28",
+  Orange: "#F28C28",
   "Antique Orange": "#F08A5D",
   "Safety Orange": "#FF8C00",
   "Tennessee Orange": "#F77F00",
   "Texas Orange": "#C45A2E",
-  "Sunset": "#C46A3A",
+  Sunset: "#C46A3A",
   "Brown Savana": "#A48B78",
-  "Dark Chocolate": "#4A3A2A"
+  "Dark Chocolate": "#4A3A2A",
 };
-
 
 const colorName = document.getElementById("colorName");
 
 // build dropdown
 function populateColorDropdown(defaultName = "Royal") {
   // (optional) sort alphabetically
-  const entries = Object.entries(shirtColors).sort((a, b) => a[0].localeCompare(b[0]));
+  const entries = Object.entries(shirtColors).sort((a, b) =>
+    a[0].localeCompare(b[0]),
+  );
 
   colorSelect.innerHTML = "";
   for (const [name, hex] of entries) {
     const opt = document.createElement("option");
-    opt.value = hex;        // what your render() will use
+    opt.value = hex; // what your render() will use
     opt.textContent = name; // what the user sees
     if (name === defaultName) opt.selected = true;
     colorSelect.appendChild(opt);
@@ -208,6 +209,33 @@ colorSelect.addEventListener("change", updateColorUI);
 // run once on load
 populateColorDropdown("White");
 
-function showImage(img) {  
-        document.getElementById("modalImage").src = img.src;
-    }
+function showImage(img) {
+  document.getElementById("modalImage").src = img.src;
+}
+
+function addShirtToCart() {
+  const size = document.getElementById("shirtSizeSelect").value;
+  const colorHex = colorSelect.value;
+  const colorNameText = colorSelect.options[colorSelect.selectedIndex].text;
+  const designSrc = designSelect.value;
+  const designName = designSelect.options[designSelect.selectedIndex].text;
+
+  const cartItem = {
+    id: "shirt",
+    name: "Custom T-Shirt",
+    priceId: "price_1Sz86nDfx4k4y8HQjExjPJth", // 🔴 replace with real Stripe Price ID
+    unitPrice: 2000,
+    quantity: 1,
+    options: {
+      size,
+      color: colorNameText,
+      design: designName,
+    },
+  };
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  window.location.href = "shop/cart.html";
+}

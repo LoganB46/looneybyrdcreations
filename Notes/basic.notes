@@ -11,5 +11,7 @@ Under construction:
 Reminders:
 - While linking files make sure to add a / at the beginning of the path to avoid issues with relative paths.
 
+! Make sure this is pasted in the head of all html pages BEFORE ANY LINKS!!!
+
 Console Commands:
 - npx https-server  --> Starts a local server, it works like live server, but with less issues.

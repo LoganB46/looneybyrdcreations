@@ -11,26 +11,24 @@ cupBase20.src = "resource/cups/20-oz-cup.png";
 const cupBase32 = new Image();
 cupBase32.src = "resource/cups/32-oz-cup.png";
 const PRINT_AREAS = {
-  "20": {
+  20: {
     x: 240,
     y: 260,
     w: 380,
     h: 420,
-    curvature: 0.18
+    curvature: 0.18,
   },
-  "32": {
+  32: {
     x: 260,
     y: 300,
     w: 420,
     h: 540,
-    curvature: 0.24
-  }
+    curvature: 0.24,
+  },
 };
 
 function getPrintArea() {
-  return cupSizeSelect.value === "32"
-    ? PRINT_AREAS["32"]
-    : PRINT_AREAS["20"];
+  return cupSizeSelect.value === "32" ? PRINT_AREAS["32"] : PRINT_AREAS["20"];
 }
 
 // Active base
@@ -68,11 +66,7 @@ function drawWrappedDesign(img) {
     const dx = startX + (i / slices) * drawW;
     const dw = (drawW / slices) * curve;
 
-    ctx.drawImage(
-      img,
-      sx, 0, sliceW, img.height,
-      dx, startY, dw, drawH
-    );
+    ctx.drawImage(img, sx, 0, sliceW, img.height, dx, startY, dw, drawH);
   }
 
   ctx.restore();
@@ -97,15 +91,15 @@ function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(cupBase, 0, 0, canvas.width, canvas.height);
 
-  if(designImg) {
+  if (designImg) {
     drawWrappedDesign(designImg);
   }
 }
 
 // Events
 cupSizeSelect.addEventListener("change", () => {
-  cupBase = (cupSizeSelect.value === "32") ? cupBase32 : cupBase20;
-  
+  cupBase = cupSizeSelect.value === "32" ? cupBase32 : cupBase20;
+
   if (cupBase.complete && cupBase.naturalWidth) {
     setCanvasToBase(cupBase);
     render();
@@ -136,4 +130,32 @@ window.showImage = showImage; // make it callable from onclick=""
 function setCanvasToBase(img) {
   canvas.width = img.naturalWidth;
   canvas.height = img.naturalHeight;
+}
+
+function addCupToCart() {
+  const size = cupSizeSelect.value;
+  const designName = designSelect.options[designSelect.selectedIndex].text;
+
+  const priceMap = {
+    20: "price_CUP_20OZ",
+    32: "price_CUP_32OZ",
+  };
+
+  const cartItem = {
+    id: "tumbler",
+    name: `Custom Tumbler (${size} oz)`,
+    priceId: priceMap[size], // 🔴 Stripe Price IDs
+    unitPrice: size === "32" ? 3500 : 2500,
+    quantity: 1,
+    options: {
+      size,
+      design: designName,
+    },
+  };
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  window.location.href = "shop/cart.html";
 }

@@ -1,137 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Looney Byrd Creations</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Looney Byrd Creations</title>
 
-  <base href="/looneybyrdcreations/">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-  
+    <script>
+      (function () {
+        const repo = "looneybyrdcreations"; // <-- change to your repo name
+        const isGithubPages = location.hostname.endsWith("github.io");
+        const base = isGithubPages ? `/${repo}/` : `/`;
+        document.head.insertAdjacentHTML("afterbegin", `<base href="${base}">`);
+      })();
+    </script>
 
-  <style>
-    body {
-      background-size: cover;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-image: url("resource/site-bg2.png");
-    }
-  </style>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
 
-</head>
+    <style>
+      body {
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-image: url("resource/site-bg2.png");
+      }
+    </style>
+  </head>
 
-<body>
-  <div id="header">
-    <header class="py-3">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
-          <img src="resource/Store-image.png" class="rounded-circle" alt="Looney Byrd Creations Logo" width="300" height="250">
-          <h1 class="m-0">Looney Byrd Creations</h1>
-        </div>
-      </div>
-    </header>
-
-    <div id="navbar"></div>
-  </div><!-- ✅ close header div -->
-    <!-- Shirt HTML-->
-  <div class="container my-4">
-  <div class="row g-4">
-    <div class="col-lg-6">
-      <div class="card p-3">
-        <canvas id="shirtCanvas" width="900" height="900" style="width:100%; height:auto;"></canvas>
-      </div>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="card p-3">
-        <h3 class="mb-3">Customize</h3>
-
-        
-        <label class="form-label">Shirt color</label>
-            <select id="colorSelect" class="form-select">
-                <div class="d-flex align-items-center gap-2 mt-2">
-                  <span id="colorSwatch"
-                  style="width:28px;height:28px;border-radius:6px;border:1px solid #ccc;display:inline-block;"></span>
-                  <span id="colorName" class="text-muted"></span>
-                </div>
-            </select>
-            
-        <label class="form-label mt-3">Design</label>
-        <select id="designSelect" class="form-select">
-          <option value="resource/designs/placeholder.png">Placeholder</option>
-          <option value="resource/designs/bass-beer.png">Bass & Beer</option>
-          <option value="resource/designs/flag-skull.png">Flag Skull</option>
-          <option value="resource/designs/moonpie.png">Mardi Gras Moon Pie</option>
-          <option value="">None</option>
-        </select>
-
-        <label class="form-label mt-3">Size</label>
-        <select id="shirtSizeSelect" class="form-select">
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
-          <option value="XL">X-Large</option>
-          <option value="2XL">2X-Large</option>
-          <option value="3XL">3X-Large</option>
-          <option value="4XL">4X-Large</option>
-        </select>
-
-        <small class="text-muted d-block mt-3">
-          Colors shown are approximate. Actual shirt colors may vary slightly
-        </small>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Carousel -->
-<div id="demo" class="carousel slide product-carousel" data-bs-ride="carousel">
-
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-  </div>
-
-  <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="resource/shirt-colors.png" alt="colors" class="d-block w-100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this)">
-    </div>
-    <div class="carousel-item">
-      <img src="resource/shirt-size-guide.jpg" alt="size" class="d-block w-100" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage(this)">
-    </div>
-
-    <!--Reusable modal --> <div class="modal fade" id="imageModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark border-0">
-          <div class="modal-body text-center">
-            <img id="modalImage" src="" class="img-fluid rounded">
+  <body>
+    <div id="header">
+      <header class="py-3">
+        <div class="container">
+          <div
+            class="d-flex align-items-center justify-content-center gap-3 flex-wrap"
+          >
+            <img
+              src="resource/Store-image.png"
+              class="rounded-circle"
+              alt="Looney Byrd Creations Logo"
+              width="300"
+              height="250"
+            />
+            <h1 class="m-0">Looney Byrd Creations</h1>
           </div>
         </div>
-      </div> <!--Reusable modal -->
+      </header>
+
+      <div id="navbar"></div>
     </div>
-</div>
+    <!-- ✅ close header div -->
+    <!-- Shirt HTML-->
+    <div class="container my-4">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card p-3">
+            <canvas
+              id="shirtCanvas"
+              width="900"
+              height="900"
+              style="width: 100%; height: auto"
+            ></canvas>
+          </div>
+        </div>
 
+        <div class="col-lg-6">
+          <div class="card p-3">
+            <h3 class="mb-3">Customize</h3>
 
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+            <label class="form-label">Shirt color</label>
+            <select id="colorSelect" class="form-select">
+              <div class="d-flex align-items-center gap-2 mt-2">
+                <span
+                  id="colorSwatch"
+                  style="
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                    display: inline-block;
+                  "
+                ></span>
+                <span id="colorName" class="text-muted"></span>
+              </div>
+            </select>
 
-  <footer id="footer">
-    <div class="container text-center py-3">
-      <p class="mb-0">&copy; 2026 Looney Byrd Creations. All rights reserved.</p>
+            <label class="form-label mt-3">Design</label>
+            <select id="designSelect" class="form-select">
+              <option value="resource/designs/placeholder.png">
+                Placeholder
+              </option>
+              <option value="resource/designs/bass-beer.png">
+                Bass & Beer
+              </option>
+              <option value="resource/designs/flag-skull.png">
+                Flag Skull
+              </option>
+              <option value="resource/designs/moonpie.png">
+                Mardi Gras Moon Pie
+              </option>
+              <option value="">None</option>
+            </select>
+
+            <label class="form-label mt-3">Size</label>
+            <select id="shirtSizeSelect" class="form-select">
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="L">Large</option>
+              <option value="XL">X-Large</option>
+              <option value="2XL">2X-Large</option>
+              <option value="3XL">3X-Large</option>
+              <option value="4XL">4X-Large</option>
+            </select>
+
+            <small class="text-muted d-block mt-3">
+              Colors shown are approximate. Actual shirt colors may vary
+              slightly
+            </small>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
-  <script src="js/bootstrap.bundle.js" defer></script>
-  <script src="js/include.js" defer></script>
-  <script src="js/shirt-customizer.js" defer></script>
-</body>
+
+    <!-- Carousel -->
+    <div
+      id="demo"
+      class="carousel slide product-carousel"
+      data-bs-ride="carousel"
+    >
+      <!-- Indicators/dots -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="1"
+        ></button>
+      </div>
+
+      <!-- The slideshow/carousel -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="resource/shirt-colors.png"
+            alt="colors"
+            class="d-block w-100"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            onclick="showImage(this)"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="resource/shirt-size-guide.jpg"
+            alt="size"
+            class="d-block w-100"
+            data-bs-toggle="modal"
+            data-bs-target="#imageModal"
+            onclick="showImage(this)"
+          />
+        </div>
+
+        <!--Reusable modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-dark border-0">
+              <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded" />
+              </div>
+            </div>
+          </div>
+          <!--Reusable modal -->
+        </div>
+      </div>
+
+      <!-- Left and right controls/icons -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#demo"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#demo"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <footer id="footer">
+      <div class="container text-center py-3">
+        <p class="mb-0">
+          &copy; 2026 Looney Byrd Creations. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="js/bootstrap.bundle.js" defer></script>
+    <script src="js/include.js" defer></script>
+    <script src="js/shirt-customizer.js" defer></script>
+  </body>
 </html>
